@@ -1,0 +1,2 @@
+
+btnPlay.onclick
