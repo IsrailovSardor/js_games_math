@@ -54,23 +54,19 @@ const renderExample = (data) => {
 
 let correct = 0
 let inCorrect = 0
-let win = 0
+let score = 0
 let example = generateExample()
 renderExample(example)
-
-
-
- 
 
 const onSubmit = (e) => {
     e.preventDefault()
     if (Number(result.value) === Number(example.result)) {
-        win++
+        score++
         correct++
         corrPlus.classList.remove("animationpl")
         requestAnimationFrame(() => { corrPlus.classList.add("animationpl") })
     } else {
-        win--
+        score--
         inCorrect++
         scoreElement.classList.remove("animationfr")
         requestAnimationFrame(() => { scoreElement.classList.add("animationfr") })
@@ -85,8 +81,8 @@ const onSubmit = (e) => {
     }, 400)
     
     renderExample(example)
-    scoreElement.textContent = win
-    mScore.textContent = win
+    scoreElement.textContent = score
+    mScore.textContent = score
     mCorrect.textContent = correct
     mIncorrect.textContent = inCorrect
 }
@@ -94,5 +90,5 @@ const onSubmit = (e) => {
 form.addEventListener('submit', onSubmit)
 
 export const getResult = () => ({
- win
+ score
 })
