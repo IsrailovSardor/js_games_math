@@ -1,10 +1,1 @@
-todo.md
-
-# npm
-node_modules/
-
-# Webpack
-build/
-
-# WebStorm
-.idea/
+/node_modules

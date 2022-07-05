@@ -1,0 +1,302 @@
+.attack {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: relative;
+
+  video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  .attack__container {
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+
+    .attack__header {
+      width: 100%;
+      height: 80px;
+      padding: 5px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+
+      .user__blocK {
+        padding: 5px 10px;
+        color: white;
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, 0.503);
+        border: 3px solid white;
+
+        p {
+          font-family: 'Trispace', sans-serif;
+          font-weight: 600;
+          font-size: 20px;
+
+        }
+      }
+
+      button {
+        width: 150px;
+        padding: 5px 10px;
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, 0.503);
+        color: rgb(255, 255, 255);
+        border: 3px solid white;
+        font-family: 'Trispace', sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.734);
+          color: rgb(0, 0, 0);
+          border: 3px solid rgb(0, 0, 0);
+        }
+      }
+
+      .time__blocK {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 5px 10px;
+        color: white;
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, 0.503);
+        border: 3px solid white;
+
+        p {
+          font-family: 'Trispace', sans-serif;
+          font-weight: 600;
+          font-size: 20px;
+        }
+
+      }
+    }
+
+    .animation {
+      left: 0;
+      animation: hide .5s ease-in-out;
+    }
+
+    .animations {
+      left: 0;
+      animation: show .5s ease-in-out;
+    }
+
+
+    .attack__main {
+      width: 50%;
+      height: 100%;
+      height: auto;
+      display: flex;
+      position: relative;
+      gap: 5px;
+      border: 3px solid white;
+      border-radius: 4px;
+      background-color: rgba(0, 0, 0, 0.5);
+
+      .attack__firstNumber,
+      .attack__plus,
+      .attack__secondNumber,
+      .attack__rovno,
+      .attack__result {
+        font-family: 'Trispace', sans-serif;
+        font-weight: 600;
+        font-size: 100px;
+        width: 20%;
+        text-align: center;
+        background: none;
+        color: white;
+        outline: none;
+        border: none;
+
+        &::placeholder {
+          color: white;
+        }
+      }
+
+
+    }
+
+    .score {
+      width: auto;
+      height: 80px;
+      padding: 5px 15px;
+      position: fixed;
+      display: flex;
+      align-items: center;
+      bottom: 0;
+      .score__block {
+         border-radius: 4px;
+        background-color: rgba(0, 0, 0, 0.503);
+        border: 3px solid white;
+        padding: 5px 70px 5px 15px;
+        position: relative;
+        font-family: 'Trispace', sans-serif;
+        font-weight: 600;
+        font-size: 25px;
+        color: white;
+      #scoreForm {
+        right:15px;
+        position: absolute;
+
+        &.animationfr {
+          animation: shake .5s ease-in-out;
+        }
+      }
+      #corrPlus {
+        color: green;
+        position: absolute;
+        right: -20px;
+        opacity: 0;
+      
+      &.animationpl {
+        animation: plus .5s ease-in-out;
+      }      }
+    }
+
+    }
+  }
+}
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -50;
+ .modal__container {
+  width: 100%;
+  height: auto;
+  padding: 60px 15px;
+  background-color: rgba(240, 248, 255, 0.71);
+  position: absolute;
+  display: flex;
+  gap: 50px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .modal__back {
+    padding: 5px 15px;
+    font-family: 'Trispace', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    color: white;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.503);
+    border: 3px solid white;
+    cursor: pointer;
+    transition: 0.4s;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.734);
+      color: rgb(0, 0, 0);
+      border: 3px solid rgb(0, 0, 0);
+    }
+  }
+  .modal__contnet {
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  p {
+    font-family: 'Trispace', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+  }
+  div {
+    display: flex;
+    gap: 15px;
+  } }
+  .button {
+    display: flex;
+    gap: 15px;
+    button {
+      padding: 5px 15px;
+    font-family: 'Trispace', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    color: white;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.503);
+    border: 3px solid white;
+    cursor: pointer;
+    transition: 0.4s;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.734);
+      color: rgb(0, 0, 0);
+      border: 3px solid rgb(0, 0, 0);
+    }
+    }
+  }
+ 
+
+ } 
+}
+
+
+@keyframes hide {
+  from {
+    opacity: 0.2;
+    left: 100%;
+  }
+
+  to {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+@keyframes show {
+  from {
+    opacity: 0.5;
+    left: 0%;
+  }
+
+  to {
+    opacity: 1;
+    left: -130%;
+  }
+}
+
+@keyframes plus {
+  from {
+    opacity: 1;
+    top: 30%;
+  }
+
+  to {
+    opacity: 0.2;
+    top: -70%;
+  }
+}
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}

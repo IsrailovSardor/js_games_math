@@ -1,83 +1,80 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
+const path = require('path')
+const fs = require('fs')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-module.exports = (env, argv) => {
-    return (argv.mode === "production")
-        ? {}
-        : devConfig;
-};
+const PAGES_DIR = `${path.resolve(__dirname, 'src')}/pages/`
+const PAGES = fs
+  .readdirSync(PAGES_DIR)
+  .filter((fileName) => fileName.endsWith('.html'))
 
-
-const devConfig = {
-    mode: "development",
-    devtool: "source-map",
-    entry: "./src/index.js",
-    output: {
-        filename: "bundle.js",
-        path: path.resolve(__dirname, "./build"),
-        clean: true,
-        assetModuleFilename: (pathData) => {
-            const filepath = path
-                .dirname(pathData.filename)
-                .split("/")
-                .slice(1)
-                .join("/");
-            return `${filepath}/[name][ext][query]`;
-        }
+module.exports = {
+  context: path.resolve(__dirname, 'src'),
+  mode: 'development',
+  entry: './scripts/main.js',
+  output: {
+    filename: '[name].[hash].js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  devServer: {
+    port: 3000,
+    static: {
+      directory: path.join(__dirname, 'dist'),
     },
-    devServer: {
-        port: 5007,
-        static: "./build",
-        hot: true,
-        watchFiles: ["./src/index.html"]
+    watchFiles: {
+      paths: ['./src/pages/**/*.html'],
+      options: {
+        usePolling: true,
+      },
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: "./src/index.html",
-            inject: "body"
-        }),
-        new MiniCssExtractPlugin({
-            filename: "index.css"
-        }),
-        new CopyPlugin({
-            patterns: [
-                { from: "./src/assets", to: "assets" },
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(jpe?g|png|svg)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
 
-            ],
-        }),
+      {
+        test: /\.css$/,
+        use: ['css-loader'],
+      },
     ],
-    module: {
-        rules: [
-            {
-                test: /\.s[ac]ss$/i,
-                use: [
-                    // MiniCssExtractPlugin.loader, // TODO: вернуть этот лоадер и убрать style-loader в итоговом билде
-                    "style-loader",
-                    "css-loader",
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            postcssOptions: {
-                                plugins: [
-                                    [
-                                        "postcss-preset-env",
-                                        {
-                                            // Options
-                                        }
-                                    ]
-                                ]
-                            }
-                        }
-                    },
-                    "sass-loader"
-                ]
-            },
-            {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: "asset/resource"
-            }
-        ]
-    }
-};
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+
+    new MiniCssExtractPlugin({
+      filename: 'styles/style.css',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'src/assets'),
+          to: path.resolve(__dirname, 'dist/assets'),
+        },
+        {
+          from: path.resolve(__dirname, 'src/scripts'),
+          to: path.resolve(__dirname, 'dist/scripts'),
+        },
+      ],
+    }),
+    ...PAGES.map(
+      (page) =>
+        new HtmlWebpackPlugin({
+          template: `${PAGES_DIR}/${page}`,
+          filename: page,
+        })
+    ),
+  ],
+}
