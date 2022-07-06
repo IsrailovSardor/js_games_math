@@ -6,7 +6,7 @@ const pause = document.getElementById('stop')
 const modal = document.getElementById('modal')
 const tasks = document.getElementById('task')
 
-const TIME_LIMIT = 4
+const TIME_LIMIT = 8
 let timePassed = 0
 let timeLeft = TIME_LIMIT
 let timerInterval = null
@@ -23,33 +23,43 @@ const formatTime = (time) => {
 
     return `${minutes}:${seconds}`
 }
-    function getItem() {
-        const result = getResult()
-        const name = localStorage.getItem('name')
-        const itog = [{
-            "name": name,
-            "score": result.score,
-            "id": 0
-        }]
-        localStorage.setItem('score', JSON.stringify({...(itog)}));
-        // var itogMas = localStorage.getItem('score');
-        // console.log('score: ', JSON.parse(itogMas));
+function getItem() {
+    const result = getResult()
+    const currentName = localStorage.getItem('name')
+    
+    const itog = {
+        "name": currentName,
+        "score": result.score,
+        "id": 0
     }
+
+    let score = JSON.parse(localStorage.getItem('score'))
+
+    score = score.length ? score : []
+
+    const names = score.map(user => user.name)
+    !names.includes(currentName) && score.push(itog)
+
+    score = score.map((user) => {
+        if (user.name == currentName && user.score < result.score) {
+            return {
+                ...user,
+                score: result.score
+            }
+        } else {
+            return user;
+        }
+    })
+
+    localStorage.setItem('score', JSON.stringify(score))
+
+}
 
 
 function onTimesUp() {
     clearInterval(timerInterval)
     getItem()
-}
-
-
-
-// localStorage.setItem('score')
-// const itog = [Sardor, result]
-// const itog = ['Sardor', 20, 15]
-// localStorage.setItem('name', JSON.stringify( itog))
-// const b = localStorage.getItem('name')
-// const c = JSON.parse(b) 
+} 
 
 timerInterval = setInterval(() => {
     timePassed = timePassed += 1
