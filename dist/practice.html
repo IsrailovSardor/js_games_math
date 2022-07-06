@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script defer src="main.93167a0895a8cd5420ec.js"></script><link href="styles/style.css" rel="stylesheet"></head>
+<body>
+    <section class="attack">
+        <video src="../assets/img/Waves - 71122.mp4" autoplay="" loop="loop" muted="muted"></video>
+        <div class="attack__container">
+            <div class="attack__header">
+                <div class="user__blocK">
+                    <p>Have fun <span id="name"></span></p>
+                </div>
+                <button id="stop">Stop game</button>
+            </div>
+            <form class="attack__main animation" id="task">
+                <div class="attack__firstNumber" id="firstNumber">0</div>
+                <div class="attack__plus" id="operator">+</div>
+                <div class="attack__secondNumber" id="secondNumber">0</div>
+                <div class="attack__rovno">=</div>
+                <input class="attack__result" id="result" type="number" placeholder="0" autofocus="" required="" />
+            </form>
+            <div class="score">
+                <div class="score__block">
+                <p>Your score: <span id="scoreForm">0</span><span id="corrPlus">+1</span></p>  
+            </div>
+            </div>
+        </div>
+
+        <div class="modal" id="modal">
+            <div class="modal__container">
+                <button class="modal__back" id="back">Back</button>
+                <div class="modal__contnet">
+                    <p>TIME’S UP!</p>
+                    <p>Your score: <span id="mScore">0</span></p>
+                    <div>
+                        <p>Correct: <span id="mCorrect">0</span></p>
+                        <p>Incorrect: <span id="mIncorrect">0</span></p>
+                    </div>
+                </div>
+                <div class="button">
+                    <button id="Leaderboard">Leaderboard</button>
+                    <button id="PlayAgain">Play again</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../scripts/components/pracric.js" type="module"></script>
+    <script src="../scripts/components/attack.js" type="module"></script>
+    <script src="../scripts/components/modal.js" type="module"></script>
+</body>
+</html>

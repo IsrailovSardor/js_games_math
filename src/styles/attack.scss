@@ -158,6 +158,16 @@
           animation: shake .5s ease-in-out;
         }
       }
+      #corrMinus {
+        color: red;
+        position: absolute;
+        right: -20px;
+        opacity: 0;
+      
+      &.animationmn {
+        animation: minus .5s ease-in-out;
+      } 
+      }
       #corrPlus {
         color: green;
         position: absolute;
@@ -277,6 +287,18 @@
 }
 
 @keyframes plus {
+  from {
+    opacity: 1;
+    top: 30%;
+  }
+
+  to {
+    opacity: 0.2;
+    top: -70%;
+  }
+}
+
+@keyframes minus {
   from {
     opacity: 1;
     top: 30%;

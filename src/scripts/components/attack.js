@@ -9,6 +9,7 @@ const mScore = document.getElementById("mScore")
 const mCorrect = document.getElementById("mCorrect")
 const mIncorrect = document.getElementById("mIncorrect")
 const corrPlus = document.getElementById('corrPlus')
+const corrMinus = document.getElementById('corrMinus')
 
 function getRandom(min, max) {
     min = Math.ceil(min)
@@ -69,7 +70,9 @@ const onSubmit = (e) => {
         score--
         inCorrect++
         scoreElement.classList.remove("animationfr")
-        requestAnimationFrame(() => { scoreElement.classList.add("animationfr") })
+        corrMinus.classList.remove('animationmn')
+        requestAnimationFrame(() => {  corrMinus.classList.add('animationmn') })
+        requestAnimationFrame(() => {scoreElement.classList.add("animationfr")})
     }
     result.value = ''
     example = generateExample()

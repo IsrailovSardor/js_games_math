@@ -26,7 +26,6 @@ const formatTime = (time) => {
 function getItem() {
     const result = getResult()
     const currentName = localStorage.getItem('name')
-    
     const itog = {
         "name": currentName,
         "score": result.score,
@@ -35,7 +34,7 @@ function getItem() {
 
     let score = JSON.parse(localStorage.getItem('score'))
 
-    score = score.length ? score : []
+    score = score ? score : []
 
     const names = score.map(user => user.name)
     !names.includes(currentName) && score.push(itog)
@@ -55,11 +54,10 @@ function getItem() {
 
 }
 
-
 function onTimesUp() {
     clearInterval(timerInterval)
     getItem()
-} 
+}
 
 timerInterval = setInterval(() => {
     timePassed = timePassed += 1
@@ -73,15 +71,9 @@ timerInterval = setInterval(() => {
     }
 }, 1000)
 
-
-
-
-
 pause.onclick = () => {
     onTimesUp()
     getItem()
     modal.style.zIndex = "50"
     tasks.style.display = "none"
-
 }
-
