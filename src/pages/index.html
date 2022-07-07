@@ -1,21 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <section class="main">
         <video src="./assets/img/Gaming - 37585.mp4" autoplay="" loop="loop" muted="muted"></video>
+        <img src="../assets/img/9d3213e886e3e2e916fe57978f4506da.png" alt="">
+        <div class="rules__book">
+            <p>Правила математической игры «Math Mat»</p>
+            <div class="rules__text">
+                <p>В этой игре ты можешь играть без всяких правил, но в жизни будь аккуратнее и приготовь калькулятор он
+                    тебе понадобитья. Удачи!</p>
+                <p>
+                    Введите свое имя, выберите режим Practick или Attack и нажмите Let`s go.
+                </p>
+                <p>
+                    Attack - у вас есть время (2мин) за это время вы должны как можно больше ответить правильно на
+                    задачи. После окончание времени ваш итог сохроняеться в Leaderboard.
+                </p>
+                <p>
+                    Practic - у вас нет времени и вы тренеруетесь отвечая правильно на задачи. После можете нажать Stop
+                    game и ваши итог сохронится в Leaderboard.
+                </p>
+            </div>
+
+        </div>
         <form class="main__block" id="form">
             <p class="main__title">Hello Gamer!</p>
-            <p class="user__title">Tell us your name?</p><input class="name__title" id="value" type="text" placeholder="Name" required="required" />
-            <div class="btn__title"><input class="custom-radio" id="practice" name="mode" type="radio" value="green" /><label for="practice">Practice</label><input class="custom-radio" id="attack" name="mode" type="radio" value="green" /><label for="attack">Time Attack</label></div><button id="btn-play">Let&grave;s go</button>
-            <p class="rules__title">don&rsquo;t know rules? clicke here!</p><a class="board__title" href="#">LEADERBOARD</a>
+            <p class="user__title">Tell us your name?</p><input class="name__title" id="value" type="text"
+                placeholder="Name" required="required" />
+            <div class="btn__title">
+                <input class="custom-radio" id="practice" name="mode" type="radio" value="green" />
+                <label for="practice">Practice</label>
+                <input class="custom-radio" id="attack"name="mode" type="radio" value="green" />
+                <label for="attack">Time Attack</label>
+                </div>
+                <button id="btn-play">Let&grave;s go</button>
+            <p class="rules__title">don't know the rules? hover or click on the book!</p>
+            <a class="board__title" href="./leaders.html">LEADERBOARD</a>
         </form>
     </section>
     <script src="../scripts/components/login.js"></script>
 </body>
+
 </html>

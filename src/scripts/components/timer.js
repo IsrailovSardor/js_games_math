@@ -6,7 +6,7 @@ const pause = document.getElementById('stop')
 const modal = document.getElementById('modal')
 const tasks = document.getElementById('task')
 
-const TIME_LIMIT = 8
+const TIME_LIMIT = 8000
 let timePassed = 0
 let timeLeft = TIME_LIMIT
 let timerInterval = null
@@ -23,44 +23,46 @@ const formatTime = (time) => {
 
     return `${minutes}:${seconds}`
 }
-function getItem() {
+export const getItem = (mode) => {
     const result = getResult()
     const currentName = localStorage.getItem('name')
+    const level = localStorage.getItem('level')
     const itog = {
         "name": currentName,
         "score": result.score,
+        "level": level,
         "id": 0
     }
+    console.log(itog);
 
-    let score = JSON.parse(localStorage.getItem('score'))
+    let score = JSON.parse(localStorage.getItem(mode))
 
     score = score ? score : []
+    // user.score < result.score &&
 
     const names = score.map(user => user.name)
     !names.includes(currentName) && score.push(itog)
-
     score = score.map((user) => {
-        if (user.name == currentName && user.score < result.score) {
+        if (user.name == currentName &&  user.level < level && user.score < result.score) {
             return {
                 ...user,
-                score: result.score
+                score: result.score,
+                level
             }
         } else {
             return user;
         }
     })
-
-    localStorage.setItem('score', JSON.stringify(score))
-
+    localStorage.setItem(mode, JSON.stringify(score))
 }
 
 function onTimesUp() {
     clearInterval(timerInterval)
-    getItem()
+    getItem("score")
 }
 
 timerInterval = setInterval(() => {
-    timePassed = timePassed += 1
+    timePassed += 1
     timeLeft = TIME_LIMIT - timePassed
     countDown.innerHTML = formatTime(timeLeft)
     if (timeLeft === 0) {
@@ -71,9 +73,9 @@ timerInterval = setInterval(() => {
     }
 }, 1000)
 
-pause.onclick = () => {
+export const getPause = pause.onclick = () => {
     onTimesUp()
-    getItem()
+    getItem("score")
     modal.style.zIndex = "50"
     tasks.style.display = "none"
 }

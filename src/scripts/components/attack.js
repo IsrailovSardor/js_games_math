@@ -1,3 +1,5 @@
+import { getPause } from "./timer.js"
+
 const firstNumber = document.getElementById('firstNumber')
 const secondNumber = document.getElementById('secondNumber')
 const operator = document.getElementById('operator')
@@ -8,8 +10,13 @@ const task = document.querySelector('.attack__main ')
 const mScore = document.getElementById("mScore")
 const mCorrect = document.getElementById("mCorrect")
 const mIncorrect = document.getElementById("mIncorrect")
+const mLevel = document.getElementById('mLevel')
 const corrPlus = document.getElementById('corrPlus')
 const corrMinus = document.getElementById('corrMinus')
+const storageLevel = localStorage.getItem('level')
+const levelRound = document.getElementById('level')
+
+levelRound.textContent = storageLevel
 
 function getRandom(min, max) {
     min = Math.ceil(min)
@@ -33,8 +40,9 @@ const calculate = (a, b, operator) => {
 }
 
 const generateExample = () => {
-    const firstNumber = getRandom(1, 10)
-    const secondNumber = getRandom(1, 10)
+
+    const firstNumber = getRandom(1, 10 * storageLevel ?? 10)
+    const secondNumber = getRandom(1, 10 * storageLevel ?? 10)
     const operator = operators[getRandom(0, 3)]
 
     if (operator === '/') {
@@ -71,9 +79,10 @@ const onSubmit = (e) => {
         inCorrect++
         scoreElement.classList.remove("animationfr")
         corrMinus.classList.remove('animationmn')
-        requestAnimationFrame(() => {  corrMinus.classList.add('animationmn') })
-        requestAnimationFrame(() => {scoreElement.classList.add("animationfr")})
+        requestAnimationFrame(() => { corrMinus.classList.add('animationmn') })
+        requestAnimationFrame(() => { scoreElement.classList.add("animationfr") })
     }
+
     result.value = ''
     example = generateExample()
     task.classList.remove("animation")
@@ -82,16 +91,16 @@ const onSubmit = (e) => {
         task.classList.add("animation")
         task.classList.remove("animations")
     }, 400)
-    
     renderExample(example)
     scoreElement.textContent = score
     mScore.textContent = score
     mCorrect.textContent = correct
     mIncorrect.textContent = inCorrect
+    mLevel.textContent = storageLevel
 }
 
 form.addEventListener('submit', onSubmit)
 
 export const getResult = () => ({
- score
+    score
 })

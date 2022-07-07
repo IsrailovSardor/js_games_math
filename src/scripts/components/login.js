@@ -10,7 +10,7 @@
                 location.assign('./practice.html')
             }
             if (radBtn[1].checked) {
-                location.assign('./attack.html')
+                location.assign('./levels.html')
             }
         }
     })
