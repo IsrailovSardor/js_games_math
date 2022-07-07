@@ -13,10 +13,10 @@ const mIncorrect = document.getElementById("mIncorrect")
 const mLevel = document.getElementById('mLevel')
 const corrPlus = document.getElementById('corrPlus')
 const corrMinus = document.getElementById('corrMinus')
-const storageLevel = localStorage.getItem('level')
-const levelRound = document.getElementById('level')
+// const storageLevel = localStorage.getItem('level')
+// const levelRound = document.getElementById('level')
 
-levelRound.textContent = storageLevel
+// levelRound.textContent = storageLevel
 
 function getRandom(min, max) {
     min = Math.ceil(min)
@@ -41,8 +41,10 @@ const calculate = (a, b, operator) => {
 
 const generateExample = () => {
 
-    const firstNumber = getRandom(1, 10 * storageLevel ?? 10)
-    const secondNumber = getRandom(1, 10 * storageLevel ?? 10)
+    const firstNumber = getRandom(1, 10 )
+    const secondNumber = getRandom(1, 10)
+    // const firstNumber = getRandom(1, 10 * storageLevel ?? 10)
+    // const secondNumber = getRandom(1, 10 * storageLevel ?? 10)
     const operator = operators[getRandom(0, 3)]
 
     if (operator === '/') {
@@ -96,7 +98,7 @@ const onSubmit = (e) => {
     mScore.textContent = score
     mCorrect.textContent = correct
     mIncorrect.textContent = inCorrect
-    mLevel.textContent = storageLevel
+    // mLevel.textContent = storageLevel
 }
 
 form.addEventListener('submit', onSubmit)

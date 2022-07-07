@@ -26,11 +26,11 @@ const formatTime = (time) => {
 export const getItem = (mode) => {
     const result = getResult()
     const currentName = localStorage.getItem('name')
-    const level = localStorage.getItem('level')
+    // const level = localStorage.getItem('level')
     const itog = {
         "name": currentName,
         "score": result.score,
-        "level": level,
+        // "level": level,
         "id": 0
     }
     console.log(itog);
@@ -38,16 +38,16 @@ export const getItem = (mode) => {
     let score = JSON.parse(localStorage.getItem(mode))
 
     score = score ? score : []
-    // user.score < result.score &&
+    // user.level < level
 
     const names = score.map(user => user.name)
     !names.includes(currentName) && score.push(itog)
     score = score.map((user) => {
-        if (user.name == currentName &&  user.level < level && user.score < result.score) {
+        if (user.name == currentName  && user.score < result.score) {
             return {
                 ...user,
                 score: result.score,
-                level
+                // level
             }
         } else {
             return user;
