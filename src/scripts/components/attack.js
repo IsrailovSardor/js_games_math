@@ -92,8 +92,8 @@ const onSubmit = (e) => {
     setTimeout(() => {
         task.classList.add("animation")
         task.classList.remove("animations")
-    }, 400)
-    renderExample(example)
+        renderExample(example)
+    }, 300)
     scoreElement.textContent = score
     mScore.textContent = score
     mCorrect.textContent = correct

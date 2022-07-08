@@ -6,7 +6,7 @@ const pause = document.getElementById('stop')
 const modal = document.getElementById('modal')
 const tasks = document.getElementById('task')
 
-const TIME_LIMIT = 8000
+const TIME_LIMIT = 120
 let timePassed = 0
 let timeLeft = TIME_LIMIT
 let timerInterval = null
@@ -21,7 +21,7 @@ const formatTime = (time) => {
         minutes = `0${minutes} `
     }
 
-    return `${minutes}:${seconds}`
+    return `${minutes}: ${seconds}`
 }
 export const getItem = (mode) => {
     const result = getResult()

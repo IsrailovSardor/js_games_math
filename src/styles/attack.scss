@@ -1,7 +1,6 @@
 .attack {
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3);
   position: relative;
 
   video {
@@ -136,6 +135,10 @@
       }
       .attack__result  {
         width: 32%;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+        }
       }
     }
 
@@ -462,6 +465,7 @@
           color: white;
           outline: none;
           border: none;
+
         }
         .attack__result  {
           width: 32%;
