@@ -5,12 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
+<script defer src="main.de317d2cb2ec2b37ead8.js"></script><link href="styles/style.css" rel="stylesheet"></head>
 <body>
     <section class="attack">
         <video src="../assets/img/sky.mp4" autoplay="" loop="loop" muted="muted"></video>
-
-        <!-- <video src="../assets/img/Waves - 71122.mp4" autoplay="" loop="loop" muted="muted"></video> -->
         <div class="attack__container">
             <div class="attack__header">
                 <div class="user__blocK">
@@ -18,6 +16,10 @@
                 </div>
                 <p class="user__level">Level <span id="level">1</span></p>
                 <button id="stop">Stop game</button>
+                <div class="time__blocK">
+                    <p>Time left:</p>
+                    <p id="countDown"></p>
+                </div>
             </div>
             <form class="attack__main animation" id="task">
                 <div class="attack__firstNumber" id="firstNumber">0</div>
@@ -28,16 +30,18 @@
             </form>
             <div class="score">
                 <div class="score__block">
-                    <p>Your score: <span id="scoreForm">0</span><span id="corrPlus">+1</span><span id="corrMinus">-1</span></p>  
-                </div>
+                <p>Your score: <span id="scoreForm">0</span><span id="corrPlus">+1</span><span id="corrMinus">-1</span></p>  
+            </div>
             </div>
         </div>
+
 
         <div class="modal" id="modal">
             <div class="modal__container">
                 <button class="modal__back" id="back">Home</button>
                 <div class="modal__contnet">
                     <p>TIME’S UP!</p>
+                    <p class="user__level">Level <span id="mLevel"> 0 </span></p>
                     <p>Your score: <span id="mScore">0</span></p>
                     <div>
                         <p>Correct: <span id="mCorrect">0</span></p>
@@ -51,7 +55,7 @@
             </div>
         </div>
     </section>
-    <script src="../scripts/components/pracric.js" type="module"></script>
+    <script src="../scripts/components/timer.js" type="module"></script>
     <script src="../scripts/components/attack.js" type="module"></script>
     <script src="../scripts/components/modal.js" type="module"></script>
 </body>

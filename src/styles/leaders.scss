@@ -132,7 +132,7 @@
                     padding: 15px 0;
 
                     p {
-                        width: 33%;
+                        width: 50%;
                         text-align: left;
                         font-family: 'Trispace', sans-serif;
                         font-weight: 600;
@@ -141,9 +141,8 @@
                     .score__text {
                         text-align: right;
                     }
-                    .level__text{
+                    .level__text {
                         text-align: center;
-
                     }
                 }
             }
@@ -244,6 +243,9 @@
                     }
                     .score__text {
                         text-align: right;
+                    }
+                    .level__text {
+                        text-align: center;
                     }
                 }
             }
