@@ -1,4 +1,4 @@
-import { getPause } from "./timer.js"
+import { getPause } from "./timer.js"   
 
 const firstNumber = document.getElementById('firstNumber')
 const secondNumber = document.getElementById('secondNumber')
@@ -102,7 +102,6 @@ const onSubmit = (e) => {
     mIncorrect.textContent = inCorrect
     levelRound.textContent = level
     mLevel.textContent = level
-
 }
 
 
@@ -111,7 +110,6 @@ form.addEventListener('submit', onSubmit)
 export const getResult = () => ({
     score, level
 })
-
 
 const users = document.getElementById('name')
 let user = localStorage.getItem('name')

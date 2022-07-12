@@ -1,4 +1,4 @@
-import { getItem } from "./timer.js"
+import { getItem } from './getUsers.js'
 const pause = document.getElementById('stop')
 const modal = document.getElementById('modal')
 const tasks = document.getElementById('task')
