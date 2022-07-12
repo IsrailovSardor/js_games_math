@@ -60,7 +60,7 @@ const renderExample = (data) => {
 }
 let level = 1
 let correct = 0
-let streak= 0
+let streak = 0
 let inCorrect = 0
 let score = 0
 let example = generateExample()
@@ -101,6 +101,7 @@ const onSubmit = (e) => {
     mCorrect.textContent = correct
     mIncorrect.textContent = inCorrect
     levelRound.textContent = level
+    mLevel.textContent = level
 
 }
 
@@ -110,3 +111,8 @@ form.addEventListener('submit', onSubmit)
 export const getResult = () => ({
     score, level
 })
+
+
+const users = document.getElementById('name')
+let user = localStorage.getItem('name')
+users.textContent = user
